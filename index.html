@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>간편 입사 지원</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Cloudflare Turnstile 스크립트 -->
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '973381734727720');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=973381734727720&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
+
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .agreement-link { text-decoration: underline; color: #4f46e5; }
+        .contact-input { text-align: center; flex: 1 1 0%; }
+        .status-badge { padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.8rem; font-weight: 600; flex-shrink: 0; }
+        .status-completed { background-color: #4f46e5; color: #fff; }
+        .status-pending { background-color: #fff; color: #4f46e5; border: 1px solid #dee2e6; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-4xl mx-auto px-4 py-3"><h1 class="text-xl font-bold text-indigo-600">성공적인 보험영업</h1></div>
+    </header>
+
+    <main class="max-w-4xl mx-auto">
+        <section class="space-y-0">
+             <img src="/img/land01.png" alt="image1" class="w-full" onerror="this.style.display='none'">
+             <img src="/img/land02.png" alt="image2" class="w-full" onerror="this.style.display='none'">
+             <img src="/img/land03.png" alt="image3" class="w-full" onerror="this.style.display='none'">
+             <img src="/img/land04.png" alt="image4" class="w-full" onerror="this.style.display='none'">
+             <img src="/img/land05.png" alt="image5" class="w-full" onerror="this.style.display='none'">
+             <img src="/img/land06.png" alt="image6" class="w-full" onerror="this.style.display='none'">
+             <img src="/img/land07.png" alt="image7" class="w-full" onerror="this.style.display='none'">
+        </section>
+
+        <div class="p-4 md:p-8">
+
+            <section id="contact-section" class="mt-16 p-8 bg-white rounded-2xl shadow-2xl">
+                <div class="text-center mb-8">
+                    <h2 class="text-2xl font-bold text-gray-900">보험영업 간편입사 지원하기</h2>
+                    <p class="mt-2 text-sm text-gray-600">보험영업의 기준을 바꾸겠습니다.</p>
+                </div>
+
+                <form id="contact-form" class="space-y-6">
+                    <input type="hidden" id="url_params" name="url_params">
+                    <input type="hidden" id="scroll_depth" name="scroll_depth" value="0%">
+                    
+                    <!-- ★★★ 지원 유형 라디오 버튼 추가 ★★★ -->
+                    <div class="pt-2">
+                        <div class="flex justify-around items-center">
+                            <label class="flex items-center space-x-2 text-sm cursor-pointer">
+                                <input type="radio" name="application_type" value="1명 지원" class="h-4 w-4 text-indigo-600 border-gray-300 focus:ring-indigo-500" checked>
+                                <span>1명 지원</span>
+                            </label>
+                            <label class="flex items-center space-x-2 text-sm cursor-pointer">
+                                <input type="radio" name="application_type" value="2명이상 지원" class="h-4 w-4 text-indigo-600 border-gray-300 focus:ring-indigo-500">
+                                <span>2명이상 지원</span>
+                            </label>
+                            <label class="flex items-center space-x-2 text-sm cursor-pointer">
+                                <input type="radio" name="application_type" value="관리자 지원" class="h-4 w-4 text-indigo-600 border-gray-300 focus:ring-indigo-500">
+                                <span>관리자 지원</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div>
+                        <input id="name" name="name" type="text" required class="relative block w-full px-3 py-3 text-gray-900 bg-gray-50 border border-gray-300 rounded-md placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="이름">
+                    </div>
+                    <div>
+                        <div class="flex items-center space-x-2">
+                            <input id="contact1" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="3" required class="contact-input relative block w-full px-3 py-3 text-gray-900 bg-gray-50 border border-gray-300 rounded-md placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="010">
+                            <span class="text-gray-500">-</span>
+                            <input id="contact2" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="4" required class="contact-input relative block w-full px-3 py-3 text-gray-900 bg-gray-50 border border-gray-300 rounded-md placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="1234">
+                            <span class="text-gray-500">-</span>
+                            <input id="contact3" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="4" required class="contact-input relative block w-full px-3 py-3 text-gray-900 bg-gray-50 border border-gray-300 rounded-md placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="5678">
+                        </div>
+                        <input type="hidden" id="contact" name="contact">
+                    </div>
+
+                    <div class="space-y-3 pt-4">
+                        <div class="flex items-start">
+                            <input id="privacy-agree" name="privacy_agree" type="checkbox" checked class="h-4 w-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500 mt-1">
+                            <label for="privacy-agree" class="ml-2 text-sm text-gray-700">
+                                <a href="https://docs.google.com/document/d/1dnvIVeBg0NOxdBCuYpkVVi191bESt-4BdqTUEiYhDN0/edit?tab=t.0" target="_blank" class="agreement-link">개인정보처리방침</a>에 동의합니다.
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="cf-turnstile" data-sitekey="0x4AAAAAABucVGz5ZsXM6npn"></div>
+                    
+                    <div class="space-y-4">
+                        <button type="submit" id="submit-button" class="relative flex justify-center w-full px-4 py-3 text-sm font-medium text-white bg-indigo-600 border-transparent rounded-md group hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"><span id="button-text">간편입사 지원하기</span><span id="button-spinner" class="hidden w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></span></button>
+                        
+                        <!-- ★★★ 실시간 상담하기 버튼 추가 ★★★ -->
+                        <a href="https://open.kakao.com/o/sqecASfh" target="_blank" class="relative flex justify-center w-full px-4 py-3 text-sm font-medium text-gray-800 bg-yellow-400 border-transparent rounded-md group hover:bg-yellow-500">
+                            실시간 상담하기
+                        </a>
+                    </div>
+                </form>
+                <div id="response-message" class="text-center text-sm mt-4"></div>
+            </section>
+            
+            <section class="my-12 p-6 bg-indigo-900/95 rounded-2xl shadow-lg">
+                <h2 class="text-xl font-bold text-white text-center mb-4">실시간 입사지원 현황</h2>
+                <div id="status-board-container" class="h-32 overflow-hidden relative"><ul id="status-list" class="absolute top-0 left-0 w-full space-y-2"></ul></div>
+            </section>
+
+        </div>
+    </main>
+
+    <footer class="mt-16 pb-8 text-center text-xs text-gray-500">
+        <p>&copy; 2025 성공적인 보험영업. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // ... (기존 스크립트와 동일)
+        const form = document.getElementById('contact-form');
+        form.addEventListener('submit', async(e) => {
+            e.preventDefault();
+            const contact1 = document.getElementById('contact1').value;
+            const contact2 = document.getElementById('contact2').value;
+            const contact3 = document.getElementById('contact3').value;
+            document.getElementById('contact').value = (contact1 + contact2 + contact3).replace(/[^0-9]/g, '');
+            const submitButton = document.getElementById('submit-button');
+            submitButton.disabled = true;
+            document.getElementById('button-text').classList.add('hidden');
+            document.getElementById('button-spinner').classList.remove('hidden');
+            const responseMessage = document.getElementById('response-message');
+            responseMessage.textContent = '';
+            responseMessage.classList.remove('text-green-500', 'text-red-500');
+            const formData = new FormData(form);
+            try {
+                const response = await fetch('/submit', { method: 'POST', body: formData });
+                const result = await response.json();
+                if (response.ok) {
+                    responseMessage.textContent = '지원이 완료되었습니다. 빠른 시일 내에 연락드리겠습니다!';
+                    responseMessage.classList.add('text-green-500');
+                    if (typeof fbq === 'function') { fbq('track', 'Lead'); }
+                    form.reset();
+                    if (typeof turnstile !== 'undefined') turnstile.reset();
+                } else { throw new Error(result.message || '지원 중 오류가 발생했습니다.'); }
+            } catch (error) {
+                responseMessage.textContent = error.message;
+                responseMessage.classList.add('text-red-500');
+            } finally {
+                submitButton.disabled = false;
+                document.getElementById('button-text').classList.remove('hidden');
+                document.getElementById('button-spinner').classList.add('hidden');
+            }
+        });
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => { if (typeof fbq === 'function') { fbq('track', 'ViewContent'); } }, 15000);
+            document.getElementById('name').addEventListener('focus', () => { if (typeof fbq === 'function') { fbq('track', 'Contact'); } }, { once: true });
+            document.getElementById('contact1').addEventListener('focus', () => { if (typeof fbq === 'function') { fbq('track', 'InitiateCheckout'); } }, { once: true });
+            let maxScroll = 0;
+            const scrollDepthInput = document.getElementById('scroll_depth');
+            let scrolled50 = false;
+            window.addEventListener('scroll', () => {
+                const scrollableHeight = document.body.scrollHeight - window.innerHeight;
+                if (scrollableHeight <= 0) return;
+                const scrollPercent = Math.round((window.scrollY / scrollableHeight) * 100);
+                if (scrollPercent > maxScroll) {
+                    maxScroll = scrollPercent;
+                    scrollDepthInput.value = `${maxScroll}%`;
+                }
+                if (maxScroll >= 50 && !scrolled50) {
+                    scrolled50 = true;
+                    if (typeof fbq === 'function') { fbq('trackCustom', 'Scroll_50_Percent'); }
+                }
+            });
+            function prefillFormFromUrl() {
+                const urlParams = new URLSearchParams(window.location.search);
+                document.getElementById('url_params').value = urlParams.toString();
+                const name = urlParams.get('name') || urlParams.get('full_name');
+                const contact = urlParams.get('contact') || urlParams.get('phone_number');
+                if (name && !name.includes('{{')) { document.getElementById('name').value = name; }
+                if (contact && !contact.includes('{{')) {
+                    const normalizedContact = contact.replace(/[^0-9]/g, '');
+                    if (normalizedContact.length >= 10) {
+                        document.getElementById('contact1').value = normalizedContact.substring(0, 3);
+                        document.getElementById('contact2').value = normalizedContact.substring(3, 7);
+                        document.getElementById('contact3').value = normalizedContact.substring(7, 11);
+                    }
+                }
+            }
+            prefillFormFromUrl();
+            const statusList = document.getElementById('status-list');
+            const lastNames = ["김", "이", "박", "최", "정", "강", "조", "윤", "장", "임", "한", "오", "서", "신", "권", "황", "안", "송"];
+            const today = new Date();
+            const dateString = `${String(today.getMonth()+1).padStart(2,'0')}.${String(today.getDate()).padStart(2,'0')}`;
+            function createStatusItem() {
+                const name = lastNames[Math.floor(Math.random() * lastNames.length)] + "**";
+                const isCompleted = Math.random() > 0.4;
+                const statusText = isCompleted ? "접수완료" : "접수중";
+                const statusClass = isCompleted ? "status-completed" : "status-pending";
+                const randomDigits = String(Math.floor(Math.random() * 10000)).padStart(4, '0');
+                const phoneNumber = `010-****-${randomDigits}`;
+                const li = document.createElement('li');
+                li.className = 'flex items-center justify-between p-2 bg-white/90 dark:bg-gray-800/90 rounded-md shadow text-gray-800 dark:text-gray-200 text-xs sm:text-sm';
+                li.innerHTML = `<span class="w-1/5 text-left">${dateString}</span><span class="font-medium w-1/5 text-center">${name}</span><span class="w-2/5 text-center">${phoneNumber}</span><span class="${statusClass} status-badge w-1/5 text-center">${statusText}</span>`;
+                return li;
+            }
+            for (let i = 0; i < 5; i++) { statusList.appendChild(createStatusItem()); }
+            function scrollStatus() {
+                const firstItem = statusList.firstChild;
+                if (!firstItem) return;
+                const itemHeight = firstItem.offsetHeight + 8;
+                statusList.style.transition = 'transform 0.8s ease-in-out';
+                statusList.style.transform = `translateY(-${itemHeight}px)`;
+                setTimeout(() => {
+                    statusList.style.transition = 'none';
+                    statusList.style.transform = 'translateY(0)';
+                    statusList.removeChild(firstItem);
+                    statusList.appendChild(createStatusItem());
+                }, 800);
+            }
+            setInterval(scrollStatus, 2100);
+        });
+    </script>
+</body>
+</html>
+
+
